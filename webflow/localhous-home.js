@@ -1,5 +1,5 @@
 console.log("home js working!");
-console.log("home js working! 2");
+console.log("home js working! 3");
 
 const defaultSliderSettings = {
   slidesPerView: 1.4,

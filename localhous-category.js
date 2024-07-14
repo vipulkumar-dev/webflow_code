@@ -1,11 +1,10 @@
-console.log("category");
+console.log("category 23");
 
 window.addEventListener("load", (event) => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const categoryValue = urlParams.get("category");
   console.log(categoryValue);
-  ("dgd");
 
   const tabElement = document.querySelector(`[data-w-tab="${categoryValue}"]`);
 

@@ -5,6 +5,7 @@ window.addEventListener("load", (event) => {
   const urlParams = new URLSearchParams(queryString);
   const categoryValue = urlParams.get("category");
   console.log(categoryValue);
+  ("dgd");
 
   const tabElement = document.querySelector(`[data-w-tab="${categoryValue}"]`);
 

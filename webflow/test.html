@@ -1,0 +1,77 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script>
+
+<script>
+  // use a script tag or an external JS file
+  document.addEventListener("DOMContentLoaded", (event) => {
+    gsap.registerPlugin(ScrollTrigger, CustomEase);
+    // gsap code here!
+  });
+
+  let tl = gsap.timeline();
+
+  // An array of elements or selectors you want to animate
+  let elements = document.querySelectorAll(".animate");
+
+  // Loop over the elements and add tweens to the timeline
+  elements.forEach((element, index) => {
+    tl.to(element, {
+      duration: 1,
+      x: 100 * (index + 1), // Example: Move each element further along the x-axis
+      opacity: 1, // Example: Fade in each element
+      delay: index * 0.2, // Example: Stagger the animations
+    });
+  });
+
+  const defaultSliderSettings = {
+    slidesPerView: 1.4,
+    spaceBetween: 16,
+    loop: false,
+
+    breakpoints: {
+      // when window width is >= 320px
+      1250: {
+        slidesPerView: 1,
+        spaceBetween: 32,
+      },
+      835: {
+        slidesPerView: 2.8,
+        spaceBetween: 20,
+      },
+
+      // when window width is >= 480px
+      580: {
+        slidesPerView: 2.2,
+        spaceBetween: 20,
+      },
+      // when window width is >= 640px
+    },
+    // If we need pagination
+    // pagination: {
+    //   el: ".swiper-pagination",
+    // },
+    // Navigation arrows
+  };
+
+  window.addEventListener("load", (event) => {
+    const swiper_category = new Swiper(".swiper", {
+      ...defaultSliderSettings,
+      ...{
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      },
+    });
+  });
+
+  // You can control the timeline as needed
+  tl.play();
+</script>

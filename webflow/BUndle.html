@@ -1,29 +1,3 @@
-<script>
-  window.onload = function () {
-    const barContent = `<p class="" style="white-space:pre-wrap;">Use coupon 'SJ-DENFREE' at checkout to get QT Film Density for FREE!! <strong>CLAIM NOW</strong></p>`;
-
-    const barLink = "https://courses.waqasqazi.com/qt-skin-juice-mixer/buy";
-
-    // Find the element with the class 'sqs-announcement-bar-text-inner'
-    const announcementBar = document.querySelector(
-      ".sqs-announcement-bar-text-inner"
-    );
-
-    // Replace the inner HTML with the barContent
-    if (announcementBar) {
-      announcementBar.innerHTML = barContent;
-    }
-
-    // Find the element with the class 'sqs-announcement-bar-url' and update its href attribute
-    const announcementLink = document.querySelector(
-      ".sqs-announcement-bar-url"
-    );
-    if (announcementLink) {
-      announcementLink.href = barLink;
-    }
-  };
-</script>
-
 <style>
   /* Overlay */
   .tm-overlay {
@@ -101,7 +75,7 @@
     cursor: pointer;
     border-radius: 32px;
     margin: 0;
-    background: #faa25a;
+    background: #5599f2;
   }
 
   /* Responsive Styles */
@@ -142,21 +116,22 @@
 
 <script>
   // Inject HTML into the body using JavaScript
-  const tm_color = "#FAA25A";
-  const tm_popup_heading =
-    "Buy QT Skin Juice Mixer – Get QT Film Density FREE! 🎉";
-  const tm_popup_button = "Copy Code and Claim!";
-  const tm_popup_url = "https://courses.waqasqazi.com/qt-skin-juice-mixer/buy";
-  const tm_popup_code = "SJ-DENFREE";
+  const tm_color = "#5599F2";
+  const tm_popup_heading = "Easy Monthly Payments Available! 💥";
+  const tm_popup_button = "Click here!";
+  const tm_popup_url = "https://courses.waqasqazi.com/qt-bundle/buy";
+  const tm_popup_code = "";
 
   const popupHTML = `
         <div class="tm-overlay" id="tm-overlay">
           <div class="tm-popup">
             <h2 class="tm-popup-title">${tm_popup_heading}</h2>
-            <a href="#" class="tm-popup-button">${tm_popup_button}</a>
+            <a href="${tm_popup_url}" class="tm-popup-button">${tm_popup_button}</a>
+            <a href="${tm_popup_url}" style="display:none;" target="_blank" class="tm-popup-redirect"></a>
             <button class="tm-cancel-btn" id="tm-cancelBtn"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000" viewBox="0 0 16 16">
               <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
-            </svg></button>
+            </svg>
+            </button>
             
             <svg class="tm-svg" width="100%" viewBox="0 0 675 71" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M160.664 27.9258C300.059 27.9258 269.121 44.6123 430.664 44.6123C592.207 44.6123 675 70.7424 675 70.7424V70.9258H0C0 70.9258 21.2695 27.9258 160.664 27.9258Z" fill="${tm_color}" fill-opacity="0.2"/>
@@ -178,6 +153,7 @@
   const overlay = document.getElementById("tm-overlay");
   const cancelBtn = document.getElementById("tm-cancelBtn");
   const tm_btn = document.querySelector(".tm-popup-button");
+  const tm_redirect = document.querySelector(".tm-popup-redirect");
 
   // Show the popup after 5 seconds (5000 milliseconds)
   setTimeout(function () {
@@ -196,14 +172,16 @@
       console.log("Button clicked");
       tm_btn.textContent = "Copied! and Redirecting...";
       setTimeout(function () {
-        window.open(tm_popup_url, "_blank"); // Replace with your URL
+        // window.open(tm_popup_url, "_blank"); // Replace with your URL
+        tm_redirect.click();
       }, 2000);
     });
   } else {
     tm_btn.addEventListener("click", function (event) {
       event.preventDefault();
       console.log("Button clicked");
-      window.open(tm_popup_url, "_blank"); // Replace with your URL
+      // window.open(tm_popup_url, "_blank"); // Replace with your URL
+      tm_redirect.click();
     });
   }
 </script>

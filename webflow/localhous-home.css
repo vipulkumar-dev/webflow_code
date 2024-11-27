@@ -1,0 +1,48 @@
+.btn:hover,
+.btn_social:hover,
+.btn.green.rotate:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 4px 5px 0px rgba(0, 0, 0, 0.39);
+}
+.btn_social_icon > svg {
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.btn_social_icon:hover > svg {
+  scale: 1.15;
+}
+.btn_arrow:hover .svg_arrow {
+  rotate: 45deg;
+}
+.insta_embed::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  border-radius: 18px;
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  box-shadow: inset 2px 2px 0px rgba(255, 176, 0, 0.5),
+    inset -2px -2px 0px rgba(255, 176, 0, 0.5),
+    inset 2px -2px 0px rgba(255, 176, 0, 0.5),
+    inset -2px 2px 0px rgba(255, 176, 0, 0.5);
+}
+.insta_embed:hover::after {
+  box-shadow: inset 7px 7px 0px #ffb000, inset -7px -7px 0px #ffb000,
+    inset 7px -7px 0px #ffb000, inset -7px 7px 0px #ffb000;
+}
+.ponkey_moon_image {
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    rgb(0, 0, 0) 0%,
+    rgb(0, 0, 0) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    rgb(0, 0, 0) 0%,
+    rgb(0, 0, 0) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}

@@ -1,26 +1,29 @@
-const scrollContainer = document.querySelector(".collab-tab-menu");
+(function (global) {
+  global.pageFunctions = global.pageFunctions || {
+    executed: {},
+    functions: {},
+    addFunction: function (id, fn) {
+      if (!this.functions[id]) this.functions[id] = fn;
+    },
+    executeFunctions: function () {
+      if (this.added) return;
+      this.added = true;
+      for (const id in this.functions) {
+        if (!this.executed[id]) {
+          try {
+            this.functions[id]();
+            this.executed[id] = true;
+          } catch (e) {
+            console.error(`Error executing function ${id}:`, e);
+          }
+        }
+      }
+    },
+  };
+})(window);
 
-document.querySelectorAll(".collab-tab-link").forEach((element) => {
-  element.addEventListener("click", function () {
-    // Check if both elements exist
-    if (scrollContainer && element) {
-      // Get the bounding rectangle of the element and the scroll container
-      const elementRect = element.getBoundingClientRect();
-      const containerRect = scrollContainer.getBoundingClientRect();
-
-      // Calculate the desired horizontal position to center the element in the scroll container
-      const targetX =
-        elementRect.left -
-        containerRect.left +
-        scrollContainer.scrollLeft +
-        elementRect.width / 2 -
-        containerRect.width / 2;
-
-      // Smooth scroll horizontally to the target position
-      scrollContainer.scrollTo({
-        left: targetX,
-        behavior: "smooth",
-      });
-    }
-  });
+pageFunctions.addFunction("yourFunctionName", function () {
+  // your code
 });
+
+pageFunctions.executeFunctions();

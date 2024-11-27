@@ -1,93 +1,5 @@
 animation();
 
-const defaultSliderSettings = {
-  slidesPerView: 1.2,
-  spaceBetween: 16,
-  loop: true,
-  centeredSlides: true,
-  speed: 300,
-  autoplay: {
-    delay: 3000,
-  },
-  breakpoints: {
-    // when window width is >= 320px
-    1250: {
-      slidesPerView: 3.2,
-      spaceBetween: 18,
-    },
-    835: {
-      slidesPerView: 2.8,
-      spaceBetween: 18,
-    },
-
-    // when window width is >= 480px
-    580: {
-      slidesPerView: 2.2,
-      spaceBetween: 18,
-    },
-    // when window width is >= 640px
-  },
-  // If we need pagination
-  // pagination: {
-  //   el: ".swiper-pagination",
-  // },
-  // Navigation arrows
-};
-
-const swiper = new Swiper(".swiper", {
-  ...defaultSliderSettings,
-  ...{
-    navigation: {
-      nextEl: ".swiper-button-next-custom",
-      prevEl: ".swiper-button-prev-custom",
-    },
-    on: {
-      init: function () {
-        console.log("swiper initialized");
-      },
-    },
-  },
-});
-
-swiper.on("slideChange", function () {
-  const activeSlide =
-    swiper.slides[swiper.activeIndex]?.querySelector(".insta_embed");
-
-  let prev =
-    swiper.slides[swiper.activeIndex - 1]?.querySelector(".insta_embed");
-  let next =
-    swiper.slides[swiper.activeIndex + 1]?.querySelector(".insta_embed");
-
-  let prevmore =
-    swiper.slides[swiper.activeIndex - 2]?.querySelector(".insta_embed");
-  let nextmore =
-    swiper.slides[swiper.activeIndex + 2]?.querySelector(".insta_embed");
-
-  const parameters = {
-    duration: 0.01,
-  };
-
-  gsap.to(activeSlide, {
-    x: "0rem",
-    scale: 1.05,
-    ...parameters,
-  });
-
-  gsap.to([prev, next], { x: "0rem", scale: 0.95, ...parameters });
-
-  gsap.to(nextmore, {
-    x: "-2.3rem",
-    scale: 0.85,
-    ...parameters,
-  });
-
-  gsap.to(prevmore, {
-    x: "2.3rem",
-    scale: 0.85,
-    ...parameters,
-  });
-});
-
 function animation() {
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -249,6 +161,19 @@ function animation() {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  gsap.to(".rotate_button", {
+    rotate: 5.2,
+    duration: 0.3,
+    ease: Power2.easeIn,
+    scrollTrigger: {
+      trigger: ".rotate_button",
+      end: "top top", // selector or element
+      start: "top 80%",
+      toggleActions: "play pause resume reset",
+      //    // markers: true,
+    },
+  });
+
   gsap.fromTo(
     ".footer_monkey",
     {
@@ -267,19 +192,6 @@ function animation() {
     }
   );
 }
-
-gsap.to(".rotate_button", {
-  rotate: 5.2,
-  duration: 0.3,
-  ease: Power2.easeIn,
-  scrollTrigger: {
-    trigger: ".rotate_button",
-    end: "top top", // selector or element
-    start: "top 80%",
-    toggleActions: "play pause resume reset",
-    //    // markers: true,
-  },
-});
 
 document.querySelector(".copy_button").addEventListener("click", function (e) {
   const target = e.currentTarget;
@@ -311,6 +223,94 @@ function convertVhToFixedHeight() {
 // Run the function after the page loads
 document.addEventListener("DOMContentLoaded", function () {
   convertVhToFixedHeight();
+
+  const defaultSliderSettings = {
+    slidesPerView: 1.2,
+    spaceBetween: 16,
+    loop: true,
+    centeredSlides: true,
+    speed: 300,
+    autoplay: {
+      delay: 3000,
+    },
+    breakpoints: {
+      // when window width is >= 320px
+      1250: {
+        slidesPerView: 3.2,
+        spaceBetween: 18,
+      },
+      835: {
+        slidesPerView: 2.8,
+        spaceBetween: 18,
+      },
+
+      // when window width is >= 480px
+      580: {
+        slidesPerView: 2.2,
+        spaceBetween: 18,
+      },
+      // when window width is >= 640px
+    },
+    // If we need pagination
+    // pagination: {
+    //   el: ".swiper-pagination",
+    // },
+    // Navigation arrows
+  };
+
+  const swiper = new Swiper(".swiper", {
+    ...defaultSliderSettings,
+    ...{
+      navigation: {
+        nextEl: ".swiper-button-next-custom",
+        prevEl: ".swiper-button-prev-custom",
+      },
+      on: {
+        init: function () {
+          console.log("swiper initialized");
+        },
+      },
+    },
+  });
+
+  swiper.on("slideChange", function () {
+    const activeSlide =
+      swiper.slides[swiper.activeIndex]?.querySelector(".insta_embed");
+
+    let prev =
+      swiper.slides[swiper.activeIndex - 1]?.querySelector(".insta_embed");
+    let next =
+      swiper.slides[swiper.activeIndex + 1]?.querySelector(".insta_embed");
+
+    let prevmore =
+      swiper.slides[swiper.activeIndex - 2]?.querySelector(".insta_embed");
+    let nextmore =
+      swiper.slides[swiper.activeIndex + 2]?.querySelector(".insta_embed");
+
+    const parameters = {
+      duration: 0.01,
+    };
+
+    gsap.to(activeSlide, {
+      x: "0rem",
+      scale: 1.05,
+      ...parameters,
+    });
+
+    gsap.to([prev, next], { x: "0rem", scale: 0.95, ...parameters });
+
+    gsap.to(nextmore, {
+      x: "-2.3rem",
+      scale: 0.85,
+      ...parameters,
+    });
+
+    gsap.to(prevmore, {
+      x: "2.3rem",
+      scale: 0.85,
+      ...parameters,
+    });
+  });
 });
 
 //window.addEventListener("resize", convertVhToFixedHeight);
